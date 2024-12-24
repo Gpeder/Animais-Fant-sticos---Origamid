@@ -57,3 +57,22 @@ scrolltosection = (event) => {
 linksinternos.forEach((link) => {
     link.addEventListener('click', scrolltosection);
 });
+
+
+const numeros = document.querySelectorAll('[data-numero]');
+
+numeros.forEach((numero) => {
+    const total = +numero.innerText;
+    const incremento = Math.ceil(total / 100);
+    let start = 0;
+
+    const timer = setInterval(() => {
+        start= start + incremento;
+        numero.innerText = start;
+        if (start >= total) { 
+            numero.innerText = total;
+
+            clearInterval(timer);
+        }
+    }, 50);
+});
